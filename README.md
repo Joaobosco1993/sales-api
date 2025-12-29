@@ -112,4 +112,5 @@ http://localhost:8000/docs
 ## 👤 Autor
 
 João Bosco Ferreira  
-Estudante de ADS | Backend Python
+Estudante de Análise e Desenvolvimento de Sistemas (FIAP)  
+Backend Developer | Python | FastAPI | SQL
