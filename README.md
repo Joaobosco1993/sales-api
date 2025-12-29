@@ -1,18 +1,23 @@
-# Backend API com FastAPI
+# Sales API
 
-API REST desenvolvida em Python utilizando FastAPI, com foco em boas práticas de estruturação, autenticação e containerização com Docker.
+API REST backend desenvolvida em **Python** com **FastAPI**, seguindo boas práticas de arquitetura, autenticação e containerização com **Docker**.
 
-O projeto simula um backend real, incluindo organização em camadas, persistência de dados e execução em ambiente containerizado.
+Este projeto simula um backend real de sistema de vendas, com estrutura modular, persistência de dados e execução em ambiente containerizado.  
+Foi desenvolvido com foco em **portfólio profissional** para vagas de estágio/júnior em backend.
 
 ---
 
 ## 🚀 Funcionalidades
 
 - CRUD de entidades
-- Autenticação (JWT ou similar)
+- Autenticação com JWT
 - Validação de dados
-- Estrutura em camadas (routers, services, repositories)
+- Arquitetura em camadas:
+  - Routers
+  - Services
+  - Repositories
 - Integração com banco de dados relacional
+- Execução via Docker e Docker Compose
 
 ---
 
@@ -30,6 +35,7 @@ O projeto simula um backend real, incluindo organização em camadas, persistên
 
 ## 📁 Estrutura do Projeto
 
+```text
 app/
 ├── main.py
 ├── routers/
@@ -38,13 +44,44 @@ app/
 ├── models/
 ├── schemas/
 └── core/
+```
+
+---
+
+## 🐳 Docker Compose
+
+Exemplo de configuração utilizada para subir a API e o banco de dados:
+
+```yaml
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: sales_api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    image: mysql:8.0
+    container_name: sales_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: sales_db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+```
 
 ---
 
 ## ▶️ Como Executar o Projeto
 
 ### Pré-requisitos
-
 - Docker
 - Docker Compose
 
@@ -52,4 +89,27 @@ app/
 
 1. Clone o repositório:
 ```bash
-git clone [https://github.com/joaobosco1993/seu-repositorio.git](https://github.com/Joaobosco1993/sales_api)
+git clone https://github.com/joaobosco1993/sales-api.git
+```
+
+2. Acesse o diretório do projeto:
+```bash
+cd sales-api
+```
+
+3. Suba os containers:
+```bash
+docker-compose up -d
+```
+
+4. Acesse a documentação interativa da API:
+```text
+http://localhost:8000/docs
+```
+
+---
+
+## 👤 Autor
+
+João Bosco Ferreira  
+Estudante de ADS | Backend Python
